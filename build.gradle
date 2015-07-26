@@ -1,0 +1,34 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'pmd'
+
+sourceCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+buildscript {
+    repositories {
+        maven {
+            url uri('../repo')
+        }
+    }
+    dependencies {
+        classpath group: 'gov.sbs.plugins', name: 'VanderBlame', version: '1.0'
+    }
+}
+
+task vanderBlame(type: gov.sbs.plugins.VanderBlameTask) {
+    pmdXmlReport = file('build/reports/pmd/main.xml')
+    dependsOn tasks.pmdMain
+}
+
+pmd {
+	ignoreFailures = true	//Make sure to set this to true or else you'll never see Mr. Vanderbeek
+    ruleSets = [
+            // The first two better work since it's right in the Javadoc...
+            "java-basic",
+            "java-braces"
+    ]
+}
