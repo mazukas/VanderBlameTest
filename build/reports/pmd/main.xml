@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="5.1.1" timestamp="2015-07-25T22:54:53.219">
+<pmd version="5.1.1" timestamp="2015-07-25T22:59:18.142">
 <file name="/Users/matthewazukas/development/projects/VanderBlameTest/src/main/java/org/gradle/Person.java">
 <violation beginline="12" endline="12" begincolumn="13" endcolumn="16" rule="UnconditionalIfStatement" ruleset="Basic" package="org.gradle" class="Person" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.1/rules/java/basic.html#UnconditionalIfStatement" priority="3">
 Do not use if statements that are always true or always false
 </violation>
 <violation beginline="18" endline="19" begincolumn="9" endcolumn="64" rule="IfStmtsMustUseBraces" ruleset="Braces" package="org.gradle" class="Person" method="getName" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.1/rules/java/braces.html#IfStmtsMustUseBraces" priority="3">
+Avoid using if statements without curly braces
+</violation>
+</file>
+<file name="/Users/matthewazukas/development/projects/VanderBlameTest/src/main/java/org/maven/Person.java">
+<violation beginline="12" endline="12" begincolumn="13" endcolumn="16" rule="UnconditionalIfStatement" ruleset="Basic" package="org.maven" class="Person" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.1/rules/java/basic.html#UnconditionalIfStatement" priority="3">
+Do not use if statements that are always true or always false
+</violation>
+<violation beginline="18" endline="19" begincolumn="9" endcolumn="64" rule="IfStmtsMustUseBraces" ruleset="Braces" package="org.maven" class="Person" method="getName" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.1/rules/java/braces.html#IfStmtsMustUseBraces" priority="3">
 Avoid using if statements without curly braces
 </violation>
 </file>
