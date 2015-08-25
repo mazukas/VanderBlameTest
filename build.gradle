@@ -1,43 +1,50 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'pmd'
+apply plugin: 'findbugs'
 
 sourceCompatibility = 1.7
 
-repositories {
-    mavenCentral()
-}
+repositories { mavenCentral() }
+
 
 //dependencies {
 //	compile 'org.apache.commons:commons-io:1.3.2'
 //}
 
 buildscript {
-    repositories {
-        maven {
-            url uri('../repo')
-        }
-    }
-    dependencies {
-        classpath group: 'gov.sbs.plugins', name: 'VanderBlame', version: '1.0'
-		
-    }
+	repositories {
+		maven { url uri('../repo') }
+	}
+	dependencies {
+		classpath group: 'gov.sbs.plugins', name: 'VanderBlame', version: '1.0'
+
+	}
 }
 
 task vanderBlame(type: gov.sbs.plugins.VanderBlameTask) {
 	outputHtmlReport = file('build/reports/vanderblame/main.html')
 	outputXmlReport = file('build/reports/vanderblame/main.xml')
-    pmdXmlReport = file('build/reports/pmd/main.xml')
+	pmdXmlReport = file('build/reports/pmd/main.xml')
 	projectRoot = file('.')
-    dependsOn tasks.pmdMain
-	
+	dependsOn tasks.pmdMain
+	dependsOn tasks.findbugsMain
+
 }
 
 pmd {
 	ignoreFailures = true	//Make sure to set this to true or else you'll never see Mr. Vanderbeek
-    ruleSets = [
-            // The first two better work since it's right in the Javadoc...
-            "java-basic",
-            "java-braces"
-    ]
+	ruleSets = [
+		// The first two better work since it's right in the Javadoc...
+		"java-basic",
+		"java-braces"
+	]
+}
+
+findbugsMain {
+	ignoreFailures = true	//Make sure to set this to true or else you'll never see Mr. Vanderbeek
+	reports {
+		xml.enabled = true
+		html.enabled = false
+	}
 }
